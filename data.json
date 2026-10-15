@@ -1,0 +1,42 @@
+[
+  {
+    "id": "lethargy",
+    "symptom": "Lethargy & Fatigue",
+    "category": "Energy",
+    "summary": "Feeling constantly drained, sluggish, or physically exhausted.",
+    "nutrients": [
+      {
+        "name": "Iron",
+        "type": "Essential Mineral",
+        "role": "Helps red blood cells transport oxygen throughout the body.",
+        "daily_target": "8–18 mg/day",
+        "foods": ["Grass-fed Beef", "Spinach", "Lentils", "Pumpkin Seeds"],
+        "pro_tip": "Pair iron with Vitamin C (e.g. lemon juice) to boost absorption."
+      },
+      {
+        "name": "Vitamin B12",
+        "type": "Essential Vitamin",
+        "role": "Crucial for nerve function and cellular energy production.",
+        "daily_target": "2.4 mcg/day",
+        "foods": ["Eggs", "Salmon", "Nutritional Yeast", "Sardines"],
+        "pro_tip": "If plant-based, look for B12-fortified plant milks."
+      }
+    ]
+  },
+  {
+    "id": "muscle-cramps",
+    "symptom": "Muscle Cramps & Spasms",
+    "category": "Physical",
+    "summary": "Involuntary muscle twitches, spasms, or sudden soreness.",
+    "nutrients": [
+      {
+        "name": "Magnesium",
+        "type": "Essential Mineral",
+        "role": "Regulates muscle contraction and nerve signals.",
+        "daily_target": "310–420 mg/day",
+        "foods": ["Dark Chocolate (70%+)", "Avocados", "Almonds", "Black Beans"],
+        "pro_tip": "Magnesium glycinate is easier on the stomach than oxide."
+      }
+    ]
+  }
+]
