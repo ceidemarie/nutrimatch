@@ -3,7 +3,8 @@
     "id": "lethargy",
     "symptom": "Lethargy & Fatigue",
     "category": "Energy",
-    "summary": "Feeling constantly drained, sluggish, or physically exhausted.",
+    "is_premium": false,
+    "summary": "Feeling constantly drained, sluggish, or physically exhausted despite sleeping.",
     "nutrients": [
       {
         "name": "Iron",
@@ -11,7 +12,7 @@
         "role": "Helps red blood cells transport oxygen throughout the body.",
         "daily_target": "8–18 mg/day",
         "foods": ["Grass-fed Beef", "Spinach", "Lentils", "Pumpkin Seeds"],
-        "pro_tip": "Pair iron with Vitamin C (e.g. lemon juice) to boost absorption."
+        "pro_tip": "Pair iron with Vitamin C (e.g., lemon juice) to boost absorption."
       },
       {
         "name": "Vitamin B12",
@@ -19,23 +20,132 @@
         "role": "Crucial for nerve function and cellular energy production.",
         "daily_target": "2.4 mcg/day",
         "foods": ["Eggs", "Salmon", "Nutritional Yeast", "Sardines"],
-        "pro_tip": "If plant-based, look for B12-fortified plant milks."
+        "pro_tip": "If plant-based, look for B12-fortified plant milks or supplements."
       }
     ]
   },
   {
     "id": "muscle-cramps",
-    "symptom": "Muscle Cramps & Spasms",
-    "category": "Physical",
-    "summary": "Involuntary muscle twitches, spasms, or sudden soreness.",
+    "symptom": "Muscle Cramps & Weakness",
+    "category": "Musculoskeletal",
+    "is_premium": false,
+    "summary": "Involuntary muscle twitches, spasms, or sudden soreness after mild movement.",
     "nutrients": [
       {
         "name": "Magnesium",
         "type": "Essential Mineral",
-        "role": "Regulates muscle contraction and nerve signals.",
+        "role": "Regulates muscle contraction, relaxation, and nerve signals.",
         "daily_target": "310–420 mg/day",
         "foods": ["Dark Chocolate (70%+)", "Avocados", "Almonds", "Black Beans"],
-        "pro_tip": "Magnesium glycinate is easier on the stomach than oxide."
+        "pro_tip": "Magnesium glycinate is gentle on the stomach and great for nighttime muscle relaxation."
+      },
+      {
+        "name": "Potassium",
+        "type": "Essential Electrolyte",
+        "role": "Maintains fluid balance and proper muscle/heart function.",
+        "daily_target": "2,600–3,400 mg/day",
+        "foods": ["Bananas", "Sweet Potatoes", "Coconut Water", "White Beans"],
+        "pro_tip": "Sweating heavily depletes potassium rapidly; replenish with electrolyte-rich foods."
+      }
+    ]
+  },
+  {
+    "id": "frequent-sickness",
+    "symptom": "Frequent Sickness & Low Immunity",
+    "category": "Immune System",
+    "is_premium": false,
+    "summary": "Catching every cold that goes around or taking a long time to shake off illnesses.",
+    "nutrients": [
+      {
+        "name": "Vitamin D",
+        "type": "Essential Vitamin / Hormone",
+        "role": "Modulates the immune system and activates pathogen-fighting cells.",
+        "daily_target": "600–2,000 IU/day",
+        "foods": ["Wild-caught Salmon", "Egg Yolks", "Mushroom exposed to UV light", "Fortified Foods"],
+        "pro_tip": "Your body synthesizes Vitamin D via direct sunlight on bare skin."
+      },
+      {
+        "name": "Zinc",
+        "type": "Essential Mineral",
+        "role": "Vital for immune cell development and fighting oxidative stress.",
+        "daily_target": "8–11 mg/day",
+        "foods": ["Oysters", "Pumpkin Seeds", "Hemp Seeds", "Chickpeas"],
+        "pro_tip": "Soaking or sprouting beans/seeds increases zinc bioavailability."
+      }
+    ]
+  },
+  {
+    "id": "bloating-digestion",
+    "symptom": "Bloating & Sluggish Digestion",
+    "category": "Gut Health",
+    "is_premium": true,
+    "summary": "Frequent abdominal swelling, discomfort, or slow gut motility after eating.",
+    "nutrients": [
+      {
+        "name": "Magnesium",
+        "type": "Essential Mineral",
+        "role": "Relaxes intestinal muscles and draws water into the bowels to ease regularity.",
+        "daily_target": "310–420 mg/day",
+        "foods": ["Spinach", "Almonds", "Pumpkin Seeds", "Quinoa"],
+        "pro_tip": "Magnesium citrate is particularly helpful if sluggish digestion is an issue."
+      },
+      {
+        "name": "B-Complex Vitamins",
+        "type": "Essential Vitamins",
+        "role": "Supports metabolic function and the nervous system controlling gut motility.",
+        "daily_target": "Varies by specific B vitamin",
+        "foods": ["Nutritional Yeast", "Eggs", "Sunflower Seeds", "Lentils"],
+        "pro_tip": "Stress depletes B vitamins quickly, which can slow down digestion."
+      }
+    ]
+  },
+  {
+    "id": "brain-fog",
+    "symptom": "Brain Fog & Poor Focus",
+    "category": "Cognitive",
+    "is_premium": true,
+    "summary": "Difficulty concentrating, forgetfulness, or a sluggish mental state.",
+    "nutrients": [
+      {
+        "name": "Omega-3 Fatty Acids (EPA/DHA)",
+        "type": "Essential Healthy Fats",
+        "role": "Builds brain cell membranes and reduces neuroinflammation.",
+        "daily_target": "250–500 mg combined EPA/DHA",
+        "foods": ["Salmon", "Sardines", "Walnuts", "Chia Seeds"],
+        "pro_tip": "Plant-based omega-3s (ALA from chia/walnuts) convert poorly in the body; pair with algae oil if vegan."
+      },
+      {
+        "name": "Vitamin B6",
+        "type": "Essential Vitamin",
+        "role": "Aids in the production of neurotransmitters like serotonin and dopamine.",
+        "daily_target": "1.3–1.7 mg/day",
+        "foods": ["Chickpeas", "Poultry", "Bananas", "Nutritional Yeast"],
+        "pro_tip": "B6 works synergistically with magnesium to support mood and focus."
+      }
+    ]
+  },
+  {
+    "id": "hair-skin-issues",
+    "symptom": "Brittle Hair, Nail Ridges & Dry Skin",
+    "category": "Appearance",
+    "is_premium": true,
+    "summary": "Hair thinning, splitting fingernails, or chronically dry, flaky skin.",
+    "nutrients": [
+      {
+        "name": "Biotin (Vitamin B7)",
+        "type": "Essential Vitamin",
+        "role": "Supports keratin infrastructure in hair, skin, and nails.",
+        "daily_target": "30 mcg/day",
+        "foods": ["Egg Yolks", "Almonds", "Sweet Potatoes", "Sunflower Seeds"],
+        "pro_tip": "Raw egg whites contain avidin, which binds to biotin and blocks absorption—always cook eggs!"
+      },
+      {
+        "name": "Zinc",
+        "type": "Essential Mineral",
+        "role": "Essential for tissue repair, cellular turnover, and controlling skin oil production.",
+        "daily_target": "8–11 mg/day",
+        "foods": ["Pumpkin Seeds", "Cashews", "Lentils", "Grass-fed Beef"],
+        "pro_tip": "Zinc deficiency is a common root cause of white spots on fingernails."
       }
     ]
   }
