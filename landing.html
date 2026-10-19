@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to NutriMatch | Targeted Whole-Food & Herbal Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(229, 231, 235, 0.8); }
+    .badge-glow { box-shadow: 0 0 20px rgba(16, 185, 129, 0.25); }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 antialiased min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-900">
+
+  <!-- Minimal Header -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-slate-900 font-black text-xl">N</div>
+        <span class="text-xl font-bold tracking-tight text-white">Nutri<span class="text-emerald-400">Match</span></span>
+      </div>
+      <a href="index.html" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs sm:text-sm px-4 py-2 rounded-xl transition shadow-lg shadow-emerald-500/10">
+        Launch App &rarr;
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <!-- Hero Banner -->
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-12 text-center">
+      <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6 badge-glow">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Evidence-Informed Whole-Food & Herbal Mapping
+      </div>
+      
+      <h1 class="text-3xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-4xl mx-auto">
+        Stop Guessing. <br class="hidden sm:inline">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">Match Symptoms to Nutrients</span> & Remedies.
+      </h1>
+      
+      <p class="mt-6 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        NutriMatch translates how your body feels into actionable, exact food serving portions, bioavailability bio-hacks, and evidence-backed herbal preparations.
+      </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="index.html" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-base px-8 py-4 rounded-xl transition shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-2">
+          Open NutriMatch App
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+        <a href="#overview" class="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-base px-6 py-4 rounded-xl border border-slate-700 transition">
+          What to Expect
+        </a>
+      </div>
+    </section>
+
+    <!-- Overview: What to Expect Section -->
+    <section id="overview" class="py-16 bg-slate-800/40 border-y border-slate-800">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">What to Expect Inside NutriMatch</h2>
+          <p class="text-slate-400 mt-3 text-sm sm:text-base">Everything you need to support your body naturally, designed without the fluff.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 hover:border-emerald-500/40 transition">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-xl mb-4">01</div>
+            <h3 class="text-lg font-bold text-white mb-2">Exact Food Serving Portions</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              No generic advice. Get exact measurements (e.g., <em>1/2 Yellow Bell Pepper for ~137mg Vitamin C</em> or <em>1 cup cooked lentils for 6.6mg Iron</em>) mapped directly to your daily requirements.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 hover:border-emerald-500/40 transition">
+            <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center font-bold text-xl mb-4">02</div>
+            <h3 class="text-lg font-bold text-white mb-2">Bioavailability Pro-Tips</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Maximal absorption matters. Learn smart pairing rules like pairing non-heme iron with Vitamin C or adding black pepper (piperine) to turmeric to increase curcumin uptake by 2,000%.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 hover:border-emerald-500/40 transition">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-xl mb-4">03</div>
+            <h3 class="text-lg font-bold text-white mb-2">Herbal & Holistic Teas & Tonics</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Explore adaptogens, carminative botanicals, and herbal decoctions (like Rhodiola for burnout or Peppermint & Ginger for digestion) complete with step-by-step preparation steps.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Weekly Drop Preview & Pricing -->
+    <section class="py-16 max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-900 border border-emerald-500/30 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden shadow-2xl">
+        <div class="absolute -top-24 -right-24 w-60 h-60 bg-emerald-500/10 rounded-full blur-3xl"></div>
+        
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+          Weekly Food Drops & Clinical Research Updates
+        </h2>
+        <p class="text-slate-300 max-w-2xl mx-auto text-sm sm:text-base mb-8">
+          Subscribers get fresh nutrient-dense meal prep recipes uploaded every single week, along with simple 2-minute breakdowns of newly published nutritional science studies.
+        </p>
+
+        <div class="inline-block bg-slate-900/90 border border-slate-700 rounded-2xl p-6 max-w-sm w-full mb-8">
+          <span class="text-xs uppercase tracking-widest font-bold text-emerald-400">NutriMatch Pro Membership</span>
+          <div class="text-4xl font-black text-white mt-2 mb-1">$4.99 <span class="text-sm font-normal text-slate-400">/ month</span></div>
+          <p class="text-xs text-slate-400 mb-4">Unlock all 12+ symptoms, full serving matrices, and weekly drops.</p>
+          <a href="index.html" class="block w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3 rounded-xl transition text-sm">
+            Access App Now
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-950 py-8 text-xs text-slate-500 text-center">
+    <div class="max-w-5xl mx-auto px-4 space-y-2">
+      <p class="text-slate-400 font-semibold">Educational & Wellness Purpose Only</p>
+      <p class="max-w-2xl mx-auto text-slate-500">
+        NutriMatch provides nutritional education and herbal food mappings. It is not intended as medical advice or diagnosis. Consult a qualified physician or dietitian prior to starting dietary changes or herbal regimens.
+      </p>
+      <p class="pt-2">&copy; 2026 NutriMatch Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
