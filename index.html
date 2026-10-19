@@ -3,91 +3,769 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NutriMatch | Symptom-to-Nutrient Guide</title>
+  <title>NutriMatch | Whole Food & Herbal Symptom Guide</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            emerald: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            },
+            amber: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              600: '#d97706',
+              700: '#b45309',
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen p-6">
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between antialiased selection:bg-emerald-100 selection:text-emerald-900">
 
   <!-- Header -->
-  <header class="max-w-4xl mx-auto text-center my-8">
-    <h1 class="text-4xl font-extrabold text-emerald-600 mb-2">🌿 NutriMatch</h1>
-    <p class="text-lg text-slate-600">Select how you're feeling to uncover potential nutrient needs and whole food sources.</p>
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-700 text-white font-bold text-xl flex items-center justify-center shadow-xs">🌿</div>
+        <div>
+          <h1 class="text-2xl font-black text-slate-900 tracking-tight leading-none">NutriMatch</h1>
+          <p class="text-xs text-slate-500 font-medium mt-0.5">Whole Food & Herbal Symptom Guide</p>
+        </div>
+      </div>
+      
+      <!-- Status Badge / Unlock Controls -->
+      <div id="pro-badge-container" class="flex items-center space-x-3">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
   </header>
 
-  <!-- Main Container -->
-  <main class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-
-    <!-- Symptom Selection Sidebar -->
-    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
-      <h2 class="font-bold text-slate-700 mb-3 text-lg">Select a Symptom</h2>
-      <div id="symptom-list" class="space-y-2">
-        <!-- Dynamic Symptom Buttons will be rendered here -->
+  <!-- Main Application Container -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full">
+    
+    <!-- Hero / Search Section -->
+    <section class="mb-8 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
+      <div class="max-w-2xl mx-auto text-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-2">How is your body feeling today?</h2>
+        <p class="text-sm text-slate-600">Search symptoms to reveal essential nutrient gaps, whole foods, and herbal remedies.</p>
       </div>
-    </div>
 
-    <!-- Active Details Display -->
-    <div class="md:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-      <div id="detail-view">
-        <p class="text-slate-400 italic text-center py-12">Click a symptom on the left to explore nutrients and foods.</p>
+      <!-- Search Input -->
+      <div class="relative max-w-xl mx-auto mb-6">
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Search symptoms (e.g., fatigue, cramps, bloating, headaches)..." 
+          class="w-full bg-slate-50 border border-slate-200 focus:border-emerald-600 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500/20 text-slate-800 text-sm rounded-xl px-4 py-3.5 pl-11 transition"
+          oninput="handleSearch()"
+        />
+        <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
       </div>
-    </div>
 
+      <!-- Category Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-2" id="category-filters">
+        <button onclick="filterCategory('All')" class="cat-btn active border px-3.5 py-1.5 rounded-full text-xs font-semibold transition bg-emerald-700 text-white border-emerald-700">All Categories</button>
+        <button onclick="filterCategory('Energy')" class="cat-btn border px-3.5 py-1.5 rounded-full text-xs font-semibold transition bg-slate-100 text-slate-700 border-slate-200 hover:border-emerald-500">Energy</button>
+        <button onclick="filterCategory('Musculoskeletal')" class="cat-btn border px-3.5 py-1.5 rounded-full text-xs font-semibold transition bg-slate-100 text-slate-700 border-slate-200 hover:border-emerald-500">Musculoskeletal</button>
+        <button onclick="filterCategory('Immune System')" class="cat-btn border px-3.5 py-1.5 rounded-full text-xs font-semibold transition bg-slate-100 text-slate-700 border-slate-200 hover:border-emerald-500">Immune</button>
+        <button onclick="filterCategory('Gut & Brain')" class="cat-btn border px-3.5 py-1.5 rounded-full text-xs font-semibold transition bg-slate-100 text-slate-700 border-slate-200 hover:border-emerald-500">Gut & Brain</button>
+        <button onclick="filterCategory('Nervous System')" class="cat-btn border px-3.5 py-1.5 rounded-full text-xs font-semibold transition bg-slate-100 text-slate-700 border-slate-200 hover:border-emerald-500">Nervous System</button>
+        <button onclick="filterCategory('Appearance')" class="cat-btn border px-3.5 py-1.5 rounded-full text-xs font-semibold transition bg-slate-100 text-slate-700 border-slate-200 hover:border-emerald-500">Appearance</button>
+      </div>
+    </section>
+
+    <!-- Interactive Grid Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+      
+      <!-- Sidebar List -->
+      <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
+        <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-100">
+          <h3 class="font-bold text-slate-800 text-base">Select Symptom</h3>
+          <span id="symptom-count" class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-semibold">0 items</span>
+        </div>
+        <div id="symptom-list" class="space-y-2 max-h-[600px] overflow-y-auto pr-1">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Details View Panel -->
+      <div class="lg:col-span-2 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-xs min-h-[450px]">
+        <div id="detail-view">
+          <div class="flex flex-col items-center justify-center py-20 text-center">
+            <div class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl mb-4">🔍</div>
+            <p class="text-slate-600 font-medium">Select any symptom on the left to explore nutrients, whole foods, and holistic herbal remedies.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </main>
 
-  <!-- Medical Disclaimer -->
-  <footer class="max-w-4xl mx-auto mt-12 text-center text-xs text-slate-400 border-t pt-4">
-    <p><strong>Disclaimer:</strong> This tool is for informational and dietary educational purposes only. It is not intended to diagnose medical conditions. Always consult a licensed healthcare professional or registered dietitian for persistent health concerns.</p>
+  <!-- Footer Disclaimers -->
+  <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-4">
+      <div class="border-b border-slate-800 pb-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-2">
+          <span class="text-emerald-400 font-bold text-base">🌿 NutriMatch</span>
+          <span class="text-slate-600">|</span>
+          <span class="text-slate-400">Nutritional Science & Herbal Guidance</span>
+        </div>
+        <div class="text-slate-500">&copy; 2026 NutriMatch. All rights reserved.</div>
+      </div>
+      
+      <div class="space-y-2 text-slate-400 leading-relaxed">
+        <p><strong>Medical Disclaimer:</strong> NutriMatch is designed strictly for educational and dietary informational purposes. It is not intended to diagnose, treat, cure, or prevent any disease or medical condition. Symptom signals often overlap with clinical health conditions that require professional evaluation. Always consult a licensed physician or registered dietitian before starting any dietary supplement protocol.</p>
+        <p><strong>Botanical & Herbal Safety Notice:</strong> Herbal remedies contain biologically active phytocompounds. Certain herbs may interact with prescription medications (e.g., blood thinners, antidepressants, blood pressure drugs) or may be contraindicated during pregnancy or nursing. Always verify herb-drug interactions with a medical provider before consumption.</p>
+      </div>
+    </div>
   </footer>
 
-  <!-- App Logic -->
+  <!-- Application Logic & Data -->
   <script>
-    // Load JSON data
-    fetch('data.json')
-      .then(res => res.json())
-      .then(data => initApp(data));
+    // Comprehensive Dataset (Serves as instant fallback and primary model)
+    const dataset = [
+      {
+        "id": "lethargy",
+        "symptom": "Lethargy & Fatigue",
+        "category": "Energy",
+        "is_premium": false,
+        "summary": "Feeling constantly drained, sluggish, or physically exhausted despite adequate sleep.",
+        "nutrients": [
+          {
+            "name": "Iron",
+            "type": "Essential Mineral",
+            "role": "Required for hemoglobin formation to carry oxygen through blood cells.",
+            "daily_target": "8–18 mg/day",
+            "foods": ["Grass-fed Beef", "Spinach", "Lentils", "Pumpkin Seeds"],
+            "pro_tip": "Pair non-heme plant iron with Vitamin C (e.g., fresh lemon juice) to increase absorption up to 300%."
+          },
+          {
+            "name": "Vitamin B12",
+            "type": "Essential B-Vitamin",
+            "role": "Crucial for nerve myelin sheath maintenance and cellular ATP energy synthesis.",
+            "daily_target": "2.4 mcg/day",
+            "foods": ["Wild Salmon", "Eggs", "Nutritional Yeast", "Sardines"],
+            "pro_tip": "Plant-based individuals should consume fortified foods or methylcobalamin B12 daily."
+          }
+        ],
+        "herbs": [
+          {
+            "name": "Rhodiola Rosea",
+            "type": "Adaptogenic Herb",
+            "benefit": "Helps the body adapt to physical fatigue and mental burnout while enhancing stamina.",
+            "how_to_use": "Take as a standardized extract capsule or brewed root tea in the morning on an empty stomach."
+          },
+          {
+            "name": "Panax Ginseng",
+            "type": "Traditional Tonic",
+            "benefit": "Supports mitochondrial energy output and mental alertness.",
+            "how_to_use": "Consume as a warm decoction tea or standardized liquid extract."
+          }
+        ]
+      },
+      {
+        "id": "muscle-cramps",
+        "symptom": "Muscle Cramps & Weakness",
+        "category": "Musculoskeletal",
+        "is_premium": false,
+        "summary": "Involuntary muscle spasms, twitches, or soreness during movement or at night.",
+        "nutrients": [
+          {
+            "name": "Magnesium",
+            "type": "Essential Electrolyte Mineral",
+            "role": "Regulates muscle relaxation, calcium influx, and nerve signal transmission.",
+            "daily_target": "310–420 mg/day",
+            "foods": ["Dark Chocolate (70%+)", "Avocados", "Almonds", "Black Beans"],
+            "pro_tip": "Magnesium glycinate is ideal before bedtime for nocturnal leg cramps."
+          },
+          {
+            "name": "Potassium",
+            "type": "Essential Electrolyte",
+            "role": "Maintains cellular membrane potential and muscle contraction efficiency.",
+            "daily_target": "2,600–3,400 mg/day",
+            "foods": ["Bananas", "Sweet Potatoes", "Coconut Water", "White Beans"],
+            "pro_tip": "Replenish potassium after sweating heavy during workouts or warm weather."
+          }
+        ],
+        "herbs": [
+          {
+            "name": "Cramp Bark (Viburnum opulus)",
+            "type": "Antispasmodic Botanical",
+            "benefit": "Relaxes smooth and skeletal muscle tissues to soothe involuntary spasms.",
+            "how_to_use": "Simmer dried bark in hot water for 15 minutes to make a soothing decoction tea."
+          }
+        ]
+      },
+      {
+        "id": "frequent-sickness",
+        "symptom": "Frequent Sickness & Low Immunity",
+        "category": "Immune System",
+        "is_premium": false,
+        "summary": "Catching every circulating seasonal virus or taking long periods to recover.",
+        "nutrients": [
+          {
+            "name": "Vitamin D3",
+            "type": "Essential Secosteroid Vitamin",
+            "role": "Activates T-cells and macrophage pathogen-fighting immune responses.",
+            "daily_target": "600–2,000 IU/day",
+            "foods": ["Wild Salmon", "Egg Yolks", "UV-exposed Mushrooms"],
+            "pro_tip": "Take Vitamin D with healthy fats (like avocado or olive oil) for optimal uptake."
+          },
+          {
+            "name": "Zinc",
+            "type": "Essential Trace Mineral",
+            "role": "Critical for immune cell development and mucosal lining integrity.",
+            "daily_target": "8–11 mg/day",
+            "foods": ["Oysters", "Pumpkin Seeds", "Chickpeas", "Grass-fed Beef"],
+            "pro_tip": "Soak legumes prior to cooking to reduce phytates that block zinc absorption."
+          }
+        ],
+        "herbs": [
+          {
+            "name": "Elderberry (Sambucus nigra)",
+            "type": "Antiviral Berry",
+            "benefit": "High in anthocyanins that inhibit viral replication and shorten symptom duration.",
+            "how_to_use": "Take 1 tbsp of elderberry syrup or brew dried berries into a warm spiced tea."
+          },
+          {
+            "name": "Echinacea Purpurea",
+            "type": "Immune Stimulant",
+            "benefit": "Increases white blood cell activity at the onset of early cold symptoms.",
+            "how_to_use": "Drink as a hot tea or take as a liquid tincture for 7-10 days."
+          }
+        ]
+      },
+      {
+        "id": "bloating-digestion",
+        "symptom": "Bloating & Sluggish Digestion",
+        "category": "Gut & Brain",
+        "is_premium": true,
+        "summary": "Abdominal fullness, trapped gas, and delayed gut motility following meals.",
+        "nutrients": [
+          {
+            "name": "Magnesium Citrate",
+            "type": "Osmotic Mineral",
+            "role": "Draws water into intestinal tissues to relax smooth muscles and encourage regularity.",
+            "daily_target": "310–420 mg/day",
+            "foods": ["Spinach", "Quinoa", "Pumpkin Seeds", "Almonds"],
+            "pro_tip": "Drink ample water alongside magnesium to support gut motility."
+          }
+        ],
+        "herbs": [
+          {
+            "name": "Peppermint Leaf (Mentha piperita)",
+            "type": "Carminative Botanical",
+            "benefit": "Menthol relaxes gastrointestinal smooth muscles to release trapped gas.",
+            "how_to_use": "Steep dried peppermint leaves in boiling water for 10 minutes post-meal."
+          },
+          {
+            "name": "Ginger Root (Zingiber officinale)",
+            "type": "Prokinetic Root",
+            "benefit": "Stimulates digestive enzymes and accelerates gastric emptying.",
+            "how_to_use": "Grate fresh ginger root into hot water with a slice of lemon before meals."
+          }
+        ]
+      },
+      {
+        "id": "brain-fog",
+        "symptom": "Brain Fog & Poor Focus",
+        "category": "Gut & Brain",
+        "is_premium": true,
+        "summary": "Mental fatigue, slowness in recall, and difficulty concentrating.",
+        "nutrients": [
+          {
+            "name": "Omega-3 Fatty Acids (EPA/DHA)",
+            "type": "Essential Fatty Acids",
+            "role": "Forms structural neuronal cell membranes and reduces neuroinflammation.",
+            "daily_target": "250–500 mg combined EPA/DHA",
+            "foods": ["Wild Salmon", "Sardines", "Walnuts", "Chia Seeds"],
+            "pro_tip": "If plant-based, choose algae-derived DHA/EPA supplements for direct absorption."
+          }
+        ],
+        "herbs": [
+          {
+            "name": "Lion's Mane Mushroom (Hericium erinaceus)",
+            "type": "Nootropic Fungi",
+            "benefit": "Stimulates Nerve Growth Factor (NGF) synthesis to foster focus and memory clarity.",
+            "how_to_use": "Mix powdered dual-extract into morning coffee, tea, or warm milk."
+          },
+          {
+            "name": "Ginkgo Biloba",
+            "type": "Cerebral Botanical",
+            "benefit": "Increases microvascular blood flow to the brain.",
+            "how_to_use": "Take as a standardized extract tincture or tea daily."
+          }
+        ]
+      },
+      {
+        "id": "brittle-hair-skin",
+        "symptom": "Brittle Hair, Nails & Dry Skin",
+        "category": "Appearance",
+        "is_premium": true,
+        "summary": "Splitting fingernails, thinning hair strands, and flaky skin.",
+        "nutrients": [
+          {
+            "name": "Biotin (Vitamin B7)",
+            "type": "Water-soluble B-Vitamin",
+            "role": "Acts as an essential cofactor for keratin protein infrastructure synthesis.",
+            "daily_target": "30 mcg/day",
+            "foods": ["Egg Yolks", "Almonds", "Sweet Potatoes", "Sunflower Seeds"],
+            "pro_tip": "Always cook egg whites—raw egg white avidin blocks biotin absorption."
+          }
+        ],
+        "herbs": [
+          {
+            "name": "Horsetail (Equisetum arvense)",
+            "type": "Silica-rich Herb",
+            "benefit": "Provides bioavailable plant silica to strengthen structural connective tissues.",
+            "how_to_use": "Infuse dried herb in hot water for 15 minutes to drink as a mineral tea."
+          }
+        ]
+      },
+      {
+        "id": "insomnia-sleep",
+        "symptom": "Insomnia & Trouble Sleeping",
+        "category": "Nervous System",
+        "is_premium": true,
+        "summary": "Restlessness, racing evening thoughts, or frequent nighttime awakenings.",
+        "nutrients": [
+          {
+            "name": "Magnesium Glycinate",
+            "type": "Chelated Mineral",
+            "role": "Binds to GABA-A neural receptors to signal nervous system relaxation.",
+            "daily_target": "300–400 mg before bed",
+            "foods": ["Pumpkin Seeds", "Cashews", "Dark Chocolate", "Spinach"],
+            "pro_tip": "Glycine chelates enhance brain uptake without intestinal distress."
+          }
+        ],
+        "herbs": [
+          {
+            "name": "Chamomile (Matricaria recutita)",
+            "type": "Nervine Relaxant",
+            "benefit": "Contains apigenin, an antioxidant that quiets nervous system activity.",
+            "how_to_use": "Steep 2 tea bags in covered hot water for 10 minutes 30 minutes before bed."
+          },
+          {
+            "name": "Valerian Root (Valeriana officinalis)",
+            "type": "Sedative Root",
+            "benefit": "Promotes deep slow-wave sleep cycles.",
+            "how_to_use": "Consume as a warm herbal tea or liquid root tincture in the evening."
+          }
+        ]
+      },
+      {
+        "id": "anxiety-mood",
+        "symptom": "Anxiety & Mild Mood Swings",
+        "category": "Nervous System",
+        "is_premium": true,
+        "summary": "Feeling chronically tense, irritable, or emotionally overwhelmed.",
+        "nutrients": [
+          {
+            "name": "Vitamin B6 (Pyridoxal-5-Phosphate)",
+            "type": "Essential B-Vitamin",
+            "role": "Required cofactor for converting glutamate into GABA (calming neurotransmitter).",
+            "daily_target": "1.3–1.7 mg/day",
+            "foods": ["Chickpeas", "Poultry", "Bananas", "Nutritional Yeast"],
+            "pro_tip": "Look for P-5-P active coenzyme form if using dietary supplements."
+          }
+        ],
+        "herbs": [
+          {
+            "name": "Ashwagandha (Withania somnifera)",
+            "type": "Ayurvedic Adaptogen",
+            "benefit": "Regulates HPA-axis activation and lowers circulating cortisol levels.",
+            "how_to_use": "Mix root powder into warm golden milk with honey or take as a capsule."
+          },
+          {
+            "name": "Lemon Balm (Melissa officinalis)",
+            "type": "Calming Mint",
+            "benefit": "Inhibits GABA breakdown enzymes, soothing mild emotional stress.",
+            "how_to_use": "Brew fresh or dried leaves into an aromatic hot tea."
+          }
+        ]
+      },
+      {
+        "id": "headaches-migraines",
+        "symptom": "Frequent Headaches & Migraines",
+        "category": "Nervous System",
+        "is_premium": true,
+        "summary": "Throbbing head tension or light-sensitive headaches triggered by stress or fatigue.",
+        "nutrients": [
+          {
+            "name": "Riboflavin (Vitamin B2)",
+            "type": "Essential B-Vitamin",
+            "role": "Improves brain cellular mitochondrial energy metabolism.",
+            "daily_target": "1.3–400 mg/day (therapeutic)",
+            "foods": ["Almonds", "Eggs", "Mushrooms", "Lean Beef"],
+            "pro_tip": "Riboflavin causes harmless bright yellow urine coloration—this is completely normal."
+          }
+        ],
+        "herbs": [
+          {
+            "name": "Feverfew (Tanacetum parthenium)",
+            "type": "Anti-inflammatory Botanical",
+            "benefit": "Inhibits blood vessel constriction and serotonin release in cerebral pathways.",
+            "how_to_use": "Take as dried leaf capsules or steeped tea regularly for preventative support."
+          }
+        ]
+      },
+      {
+        "id": "joint-stiffness",
+        "symptom": "Joint Stiffness & Aches",
+        "category": "Musculoskeletal",
+        "is_premium": true,
+        "summary": "Morning joint tightness, minor discomfort, or reduced range of motion.",
+        "nutrients": [
+          {
+            "name": "Vitamin C",
+            "type": "Essential Antioxidant Vitamin",
+            "role": "Required cofactor for collagen synthesis to repair cartilage and joint connective tissue.",
+            "daily_target": "75–90 mg/day",
+            "foods": ["Bell Peppers", "Kiwis", "Strawberries", "Broccoli"],
+            "pro_tip": "Vitamin C is heat sensitive—consume fruits and raw bell peppers for maximum levels."
+          }
+        ],
+        "herbs": [
+          {
+            "name": "Turmeric Root (Curcuma longa)",
+            "type": "Anti-inflammatory Rhizome",
+            "benefit": "Curcumin inhibits inflammatory NF-kB signaling pathways in joints.",
+            "how_to_use": "Simmer ground root with black pepper and coconut oil to unlock bioavailability."
+          },
+          {
+            "name": "Boswellia (Frankincense)",
+            "type": "Resin Extract",
+            "benefit": "Blocks 5-LOX inflammatory enzymes to support smooth joint mobility.",
+            "how_to_use": "Take as a standardized resin extract capsule with meals."
+          }
+        ]
+      },
+      {
+        "id": "mouth-sores",
+        "symptom": "Mouth Sores & Cracked Lips",
+        "category": "Appearance",
+        "is_premium": true,
+        "summary": "Painful mouth ulcers or cracking at the outer corners of the lips (angular cheilitis).",
+        "nutrients": [
+          {
+            "name": "Iron & B-Complex",
+            "type": "Essential Micronutrients",
+            "role": "Supports fast-turnover oral mucous membrane tissue repair.",
+            "daily_target": "Varies by nutrient",
+            "foods": ["Spinach", "Lentils", "Eggs", "Sunflower Seeds"],
+            "pro_tip": "Avoid harsh sodium lauryl sulfate (SLS) toothpastes which aggravate mouth sores."
+          }
+        ],
+        "herbs": [
+          {
+            "name": "Calendula (Calendula officinalis)",
+            "type": "Vulnerary Flower",
+            "benefit": "Accelerates skin cellular repair and soothes irritated tissue membranes.",
+            "how_to_use": "Cool a strong tea infusion to use as a soothing oral mouth rinse."
+          }
+        ]
+      },
+      {
+        "id": "cold-hands-feet",
+        "symptom": "Chronically Cold Hands & Feet",
+        "category": "Energy",
+        "is_premium": true,
+        "summary": "Sensitivity to cool air with poor peripheral blood circulation in fingers and toes.",
+        "nutrients": [
+          {
+            "name": "Iron & B12",
+            "type": "Hematopoietic Nutrients",
+            "role": "Powers red blood cell formation to deliver warm oxygenated blood to body extremities.",
+            "daily_target": "8–18 mg Iron / 2.4 mcg B12",
+            "foods": ["Grass-fed Beef", "Lentils", "Sardines", "Egg Yolks"],
+            "pro_tip": "Check ferritin levels via blood work to rule out latent iron deficiency."
+          }
+        ],
+        "herbs": [
+          {
+            "name": "Cayenne Pepper (Capsicum annuum)",
+            "type": "Circulatory Stimulant",
+            "benefit": "Capsaicin dilates micro-vascular blood vessels to stimulate peripheral heat flow.",
+            "how_to_use": "Add pinch of cayenne powder into warm lemon tea or daily food preparations."
+          }
+        ]
+      }
+    ];
 
-    function initApp(symptoms) {
+    // State Variables
+    let currentSymptoms = [...dataset];
+    let selectedSymptom = null;
+    let selectedCategory = 'All';
+    let searchQuery = '';
+
+    // Initialize Application
+    window.onload = function() {
+      // Try loading external data.json, fallback to embedded dataset on error
+      fetch('data.json')
+        .then(res => {
+          if (!res.ok) throw new Error("Fallback to inline dataset");
+          return res.json();
+        })
+        .then(data => {
+          currentSymptoms = data;
+          initApp();
+        })
+        .catch(() => {
+          console.log("Using built-in dataset.");
+          initApp();
+        });
+    };
+
+    function initApp() {
+      renderProBadge();
+      filterAndRenderSymptoms();
+      
+      // Auto-select first item if available
+      if (currentSymptoms.length > 0) {
+        selectSymptom(currentSymptoms[0].id);
+      }
+    }
+
+    function renderProBadge() {
+      const isPro = localStorage.getItem('nutrimatch_pro') === 'true';
+      const container = document.getElementById('pro-badge-container');
+      
+      if (isPro) {
+        container.innerHTML = `
+          <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+            <span>✨</span> Member Access Unlocked
+          </span>
+          <button onclick="resetAccess()" class="text-xs text-slate-400 hover:text-slate-600 underline">Lock</button>
+        `;
+      } else {
+        container.innerHTML = `
+          <button onclick="unlockPro()" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-xs flex items-center gap-1.5">
+            <span>🔓</span> Unlock Full Access ($4.99/mo)
+          </button>
+        `;
+      }
+    }
+
+    function handleSearch() {
+      searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
+      filterAndRenderSymptoms();
+    }
+
+    function filterCategory(cat) {
+      selectedCategory = cat;
+      
+      // Update Tab Styles
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        if (btn.innerText.includes(cat) || (cat === 'All' && btn.innerText.includes('All'))) {
+          btn.className = "cat-btn active border px-3.5 py-1.5 rounded-full text-xs font-semibold transition bg-emerald-700 text-white border-emerald-700";
+        } else {
+          btn.className = "cat-btn border px-3.5 py-1.5 rounded-full text-xs font-semibold transition bg-slate-100 text-slate-700 border-slate-200 hover:border-emerald-500";
+        }
+      });
+
+      filterAndRenderSymptoms();
+    }
+
+    function filterAndRenderSymptoms() {
+      const filtered = dataset.filter(item => {
+        const matchesCategory = (selectedCategory === 'All') || (item.category === selectedCategory);
+        const matchesSearch = item.symptom.toLowerCase().includes(searchQuery) || 
+                              item.summary.toLowerCase().includes(searchQuery) ||
+                              item.nutrients.some(n => n.name.toLowerCase().includes(searchQuery) || n.foods.some(f => f.toLowerCase().includes(searchQuery)));
+        return matchesCategory && matchesSearch;
+      });
+
       const listContainer = document.getElementById('symptom-list');
+      const countLabel = document.getElementById('symptom-count');
+      const isPro = localStorage.getItem('nutrimatch_pro') === 'true';
 
-      symptoms.forEach(item => {
+      countLabel.innerText = `${filtered.length} items`;
+      listContainer.innerHTML = '';
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = `<p class="text-xs text-slate-400 text-center py-6 italic">No matching symptoms found.</p>`;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const isSelected = selectedSymptom && selectedSymptom.id === item.id;
+        const isLocked = item.is_premium && !isPro;
+
         const btn = document.createElement('button');
-        btn.className = "w-full text-left px-4 py-3 rounded-lg border border-slate-100 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-300 transition font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-400";
-        btn.innerText = item.symptom;
-        btn.onclick = () => showSymptomDetail(item);
+        btn.className = `w-full text-left p-3.5 rounded-xl border transition flex flex-col gap-1 ${
+          isSelected 
+            ? 'bg-emerald-50 border-emerald-600 ring-1 ring-emerald-600' 
+            : 'bg-white border-slate-200/80 hover:border-emerald-300 hover:bg-slate-50/80'
+        }`;
+        
+        btn.onclick = () => selectSymptom(item.id);
+
+        btn.innerHTML = `
+          <div class="flex justify-between items-center w-full">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">${item.category}</span>
+            ${isLocked 
+              ? '<span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded-md">🔒 PRO</span>' 
+              : '<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-md">FREE</span>'
+            }
+          </div>
+          <span class="font-bold text-slate-900 text-sm">${item.symptom}</span>
+        `;
+
         listContainer.appendChild(btn);
       });
     }
 
-    function showSymptomDetail(item) {
-      const detailContainer = document.getElementById('detail-view');
+    function selectSymptom(id) {
+      selectedSymptom = dataset.find(item => item.id === id);
+      filterAndRenderSymptoms(); // Refresh sidebar active highlighting
+      renderDetailView();
+    }
 
+    function renderDetailView() {
+      const container = document.getElementById('detail-view');
+      const isPro = localStorage.getItem('nutrimatch_pro') === 'true';
+
+      if (!selectedSymptom) return;
+
+      const item = selectedSymptom;
+      const isLocked = item.is_premium && !isPro;
+
+      // Locked Paywall Card
+      if (isLocked) {
+        container.innerHTML = `
+          <div class="bg-gradient-to-b from-amber-50 to-white border border-amber-200/80 p-8 rounded-2xl text-center shadow-xs">
+            <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xl mx-auto mb-3">🔒</div>
+            <span class="text-xs uppercase tracking-widest font-bold text-amber-700">Member Premium Guide</span>
+            <h3 class="text-2xl font-black text-slate-900 mt-2">${item.symptom}</h3>
+            <p class="text-slate-600 text-sm my-4 max-w-md mx-auto leading-relaxed">${item.summary}</p>
+            
+            <div class="bg-white p-5 rounded-xl border border-amber-200/60 max-w-md mx-auto mb-6 text-left space-y-2">
+              <span class="text-xs font-bold text-slate-700 uppercase">What's locked inside:</span>
+              <ul class="text-xs text-slate-600 space-y-1.5">
+                <li class="flex items-center gap-2"><span class="text-emerald-600">✓</span> Essential vitamin & mineral daily target breakdown</li>
+                <li class="flex items-center gap-2"><span class="text-emerald-600">✓</span> Top whole-food sources & absorption pro-tips</li>
+                <li class="flex items-center gap-2"><span class="text-emerald-600">✓</span> Herbal remedies, adaptogens & preparation guide</li>
+              </ul>
+            </div>
+
+            <button onclick="unlockPro()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-8 py-3.5 rounded-xl shadow-md transition transform hover:-translate-y-0.5 text-sm">
+              Unlock All Symptoms for $4.99/mo
+            </button>
+            <p class="text-xs text-slate-400 mt-3">Instant access • Cancel anytime</p>
+          </div>
+        `;
+        return;
+      }
+
+      // Unlocked Full Detail View
       let html = `
-        <span class="text-xs uppercase tracking-widest font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">${item.category}</span>
-        <h2 class="text-2xl font-bold mt-2 text-slate-800">${item.symptom}</h2>
-        <p class="text-slate-600 mb-6 text-sm">${item.summary}</p>
-        <h3 class="font-bold text-slate-700 border-b pb-2 mb-4">Key Nutrients & Food Sources</h3>
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-6 border-b border-slate-100">
+          <div>
+            <span class="text-xs uppercase tracking-widest font-extrabold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">${item.category}</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">${item.symptom}</h2>
+          </div>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed mb-8 bg-slate-50 p-4 rounded-xl border border-slate-100">${item.summary}</p>
+
+        <!-- Essential Nutrients Section -->
+        <div class="mb-8">
+          <h3 class="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
+            <span>💊</span> Essential Nutrients Needed
+          </h3>
+          <div class="space-y-4">
       `;
 
       item.nutrients.forEach(n => {
         html += `
-          <div class="mb-5 p-4 rounded-lg bg-slate-50 border border-slate-100">
-            <div class="flex justify-between items-baseline mb-1">
-              <h4 class="font-bold text-emerald-700 text-lg">${n.name}</h4>
-              <span class="text-xs text-slate-500">${n.daily_target}</span>
+          <div class="p-5 rounded-xl bg-slate-50/80 border border-slate-200/80">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+              <h4 class="font-bold text-emerald-800 text-base">${n.name} <span class="text-xs font-normal text-slate-500">(${n.type})</span></h4>
+              <span class="text-xs font-semibold bg-white border border-slate-200 px-2.5 py-1 rounded-full text-slate-600 w-fit">${n.daily_target}</span>
             </div>
-            <p class="text-xs text-slate-500 mb-3">${n.role}</p>
-            <div class="mb-2">
-              <span class="text-xs font-semibold text-slate-600">Top Food Sources:</span>
-              <div class="flex flex-wrap gap-2 mt-1">
-                ${n.foods.map(f => `<span class="bg-white border text-slate-700 text-xs px-2.5 py-1 rounded-full shadow-xs font-medium">${f}</span>`).join('')}
+            <p class="text-xs text-slate-600 mb-3 leading-relaxed">${n.role}</p>
+            
+            <div class="mb-3">
+              <span class="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-1.5">Top Whole Food Sources:</span>
+              <div class="flex flex-wrap gap-2">
+                ${n.foods.map(f => `<span class="bg-white border border-slate-200 text-slate-800 text-xs px-3 py-1 rounded-lg font-medium shadow-2xs">${f}</span>`).join('')}
               </div>
             </div>
-            <p class="text-xs text-emerald-800 bg-emerald-100/60 p-2 rounded mt-2"><strong>Tip:</strong> ${n.pro_tip}</p>
+
+            <div class="text-xs text-emerald-900 bg-emerald-100/70 border border-emerald-200/60 p-3 rounded-lg flex items-start gap-2">
+              <span class="font-bold text-emerald-800">💡 Pro-Tip:</span>
+              <span>${n.pro_tip}</span>
+            </div>
           </div>
         `;
       });
 
-      detailContainer.innerHTML = html;
+      html += `
+          </div>
+        </div>
+      `;
+
+      // Herbal & Holistic Section
+      if (item.herbs && item.herbs.length > 0) {
+        html += `
+          <div>
+            <h3 class="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
+              <span>🌿</span> Herbal Remedies & Holistic Approaches
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        `;
+
+        item.herbs.forEach(h => {
+          html += `
+            <div class="p-5 rounded-xl bg-emerald-50/40 border border-emerald-100 flex flex-col justify-between">
+              <div>
+                <div class="mb-2">
+                  <h4 class="font-bold text-slate-900 text-base">${h.name}</h4>
+                  <span class="text-xs text-emerald-700 font-medium">${h.type}</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4">${h.benefit}</p>
+              </div>
+              <div class="bg-white p-3 rounded-lg border border-emerald-200/60 text-xs text-slate-700">
+                <strong class="text-emerald-800 block mb-0.5">How to prepare:</strong>
+                ${h.how_to_use}
+              </div>
+            </div>
+          `;
+        });
+
+        html += `
+            </div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+    }
+
+    function unlockPro() {
+      localStorage.setItem('nutrimatch_pro', 'true');
+      renderProBadge();
+      filterAndRenderSymptoms();
+      if (selectedSymptom) renderDetailView();
+    }
+
+    function resetAccess() {
+      localStorage.removeItem('nutrimatch_pro');
+      renderProBadge();
+      filterAndRenderSymptoms();
+      if (selectedSymptom) renderDetailView();
     }
   </script>
 </body>
