@@ -11,15 +11,25 @@
         "type": "Essential Mineral",
         "role": "Helps red blood cells transport oxygen throughout the body.",
         "daily_target": "8–18 mg/day",
-        "foods": ["Grass-fed Beef", "Spinach", "Lentils", "Pumpkin Seeds"],
-        "pro_tip": "Pair non-heme iron with Vitamin C (e.g., lemon juice) to increase absorption."
+        "foods": [
+          "Grass-fed Beef (3 oz / ~85g = 2.2 mg)",
+          "Cooked Spinach (1 cup / ~180g = 6.4 mg)",
+          "Cooked Lentils (1 cup / ~198g = 6.6 mg)",
+          "Pumpkin Seeds (1 oz / ~28g = 2.5 mg)"
+        ],
+        "pro_tip": "Pair non-heme iron with Vitamin C (e.g., yellow bell pepper slices or lemon juice) to increase absorption."
       },
       {
         "name": "Vitamin B12",
         "type": "Essential Vitamin",
         "role": "Crucial for cellular energy production and nervous system health.",
         "daily_target": "2.4 mcg/day",
-        "foods": ["Pastured Eggs", "Wild Salmon", "Nutritional Yeast", "Sardines"],
+        "foods": [
+          "Pastured Eggs (2 large eggs = 1.1 mcg)",
+          "Wild Salmon (3 oz cooked / ~85g = 4.8 mcg)",
+          "Nutritional Yeast (1 tbsp / ~5g = 2.4 mcg)",
+          "Sardines (1 can / ~92g = 8.2 mcg)"
+        ],
         "pro_tip": "B12 requires adequate stomach acid; avoid excessive antacids right before meals."
       }
     ],
@@ -28,7 +38,7 @@
         "name": "Rhodiola Rosea",
         "type": "Adaptogenic Herb",
         "benefit": "Helps the body adapt to mental and physical fatigue while boosting stamina.",
-        "how_to_use": "Take as a standardized extract or brewed root tea in the morning."
+        "how_to_use": "Take as a standardized extract (200–400 mg) or brewed root tea in the morning."
       },
       {
         "name": "Panax Ginseng",
@@ -50,7 +60,12 @@
         "type": "Essential Mineral",
         "role": "Regulates muscle contraction, neuromuscular relaxation, and cellular fluid balance.",
         "daily_target": "310–420 mg/day",
-        "foods": ["Dark Chocolate (70%+)", "Avocados", "Almonds", "Black Beans"],
+        "foods": [
+          "Dark Chocolate 70%+ (1 oz / ~28g = 64 mg)",
+          "Avocado (1 medium / ~150g = 58 mg)",
+          "Almonds (1 oz / 23 nuts = 76 mg)",
+          "Cooked Black Beans (1 cup / ~172g = 120 mg)"
+        ],
         "pro_tip": "Magnesium glycinate is gentle on the digestive system and ideal for muscle relaxation."
       },
       {
@@ -58,7 +73,12 @@
         "type": "Essential Electrolyte",
         "role": "Maintains fluid balance and proper muscle contraction signals.",
         "daily_target": "2,600–3,400 mg/day",
-        "foods": ["Bananas", "Sweet Potatoes", "Coconut Water", "White Beans"],
+        "foods": [
+          "Banana (1 medium = 422 mg)",
+          "Baked Sweet Potato (1 medium with skin = 542 mg)",
+          "Coconut Water (1 cup / 240 ml = 600 mg)",
+          "Cooked White Beans (1 cup / ~179g = 1,000 mg)"
+        ],
         "pro_tip": "Heavy sweating depletes potassium rapidly; replenish with electrolyte-rich foods."
       }
     ],
@@ -67,7 +87,7 @@
         "name": "Cramp Bark (Viburnum opulus)",
         "type": "Botanical Antispasmodic",
         "benefit": "Traditionally used to relax smooth muscle tissue and ease muscle tension.",
-        "how_to_use": "Brew dried bark into a decoction tea or take as a liquid tincture."
+        "how_to_use": "Brew 1–2 tsp dried bark into a decoction tea or take as a liquid tincture."
       }
     ]
   },
@@ -79,19 +99,29 @@
     "summary": "Catching every cold that circulates or taking a long time to recover from minor illnesses.",
     "nutrients": [
       {
-        "name": "Vitamin D3",
-        "type": "Essential Vitamin / Hormone",
-        "role": "Modulates immune response and activates pathogen-fighting white blood cells.",
-        "daily_target": "600–2,000 IU/day",
-        "foods": ["Wild Salmon", "Pastured Egg Yolks", "UV-Exposed Mushrooms", "Sardines"],
-        "pro_tip": "Vitamin D is fat-soluble—always consume with healthy fats like olive oil or eggs."
+        "name": "Vitamin C",
+        "type": "Essential Antioxidant",
+        "role": "Stimulates white blood cell production and protects immune cells from oxidative stress.",
+        "daily_target": "75–90 mg/day",
+        "foods": [
+          "Yellow Bell Pepper (1/2 medium pepper / ~75g = ~137 mg)",
+          "Sliced Strawberries (1 cup / ~150g = 89 mg)",
+          "Steamed Broccoli (1 cup / ~150g = 81 mg)",
+          "Orange (1 medium = 70 mg)"
+        ],
+        "pro_tip": "Yellow bell peppers contain more than double the Vitamin C of oranges per serving!"
       },
       {
         "name": "Zinc",
         "type": "Essential Mineral",
         "role": "Vital for immune cell development and mucosal membrane defense.",
         "daily_target": "8–11 mg/day",
-        "foods": ["Oysters", "Pumpkin Seeds", "Hemp Seeds", "Chickpeas"],
+        "foods": [
+          "Oysters (3 medium cooked = 28 mg)",
+          "Pumpkin Seeds (1 oz / ~28g = 2.2 mg)",
+          "Hemp Seeds (3 tbsp / ~30g = 3.0 mg)",
+          "Cooked Chickpeas (1 cup / ~164g = 2.5 mg)"
+        ],
         "pro_tip": "Soaking or sprouting legumes and seeds reduces phytates that block zinc absorption."
       }
     ],
@@ -100,7 +130,7 @@
         "name": "Elderberry (Sambucus nigra)",
         "type": "Antioxidant Berry",
         "benefit": "Packed with flavonoids that support upper respiratory defense during seasonal shifts.",
-        "how_to_use": "Simmer berries into a warm tea or syrup; avoid eating raw elderberries."
+        "how_to_use": "Simmer 1–2 tbsp berries into a warm tea or syrup; avoid eating raw elderberries."
       },
       {
         "name": "Echinacea Purpurea",
@@ -122,7 +152,12 @@
         "type": "Essential Mineral",
         "role": "Draws water into the intestines to support smooth muscle motility and regularity.",
         "daily_target": "310–420 mg/day",
-        "foods": ["Spinach", "Chia Seeds", "Quinoa", "Pumpkin Seeds"],
+        "foods": [
+          "Cooked Spinach (1 cup / ~180g = 157 mg)",
+          "Chia Seeds (2 tbsp / ~28g = 111 mg)",
+          "Cooked Quinoa (1 cup / ~185g = 118 mg)",
+          "Pumpkin Seeds (1 oz / ~28g = 156 mg)"
+        ],
         "pro_tip": "Hydrate adequately when increasing dietary fiber or magnesium for digestion."
       }
     ],
@@ -131,13 +166,13 @@
         "name": "Peppermint Leaf (Mentha piperita)",
         "type": "Carminative Botanical",
         "benefit": "Menthol relaxes the smooth muscles of the GI tract, relieving gas and bloating.",
-        "how_to_use": "Steep dried leaves in hot water for 5–10 minutes immediately after meals."
+        "how_to_use": "Steep 1–2 tsp dried leaves in hot water for 5–10 minutes immediately after meals."
       },
       {
         "name": "Ginger Root (Zingiber officinale)",
         "type": "Digestive Prokinetic",
         "benefit": "Stimulates digestive enzymes and accelerates gastric emptying to reduce fullness.",
-        "how_to_use": "Grate fresh ginger into hot water with a slice of lemon before or after eating."
+        "how_to_use": "Grate 1 tsp fresh ginger into hot water with lemon before or after eating."
       }
     ]
   },
@@ -153,7 +188,12 @@
         "type": "Essential Healthy Fats",
         "role": "Builds neuronal cell membranes and reduces central neuroinflammation.",
         "daily_target": "250–500 mg EPA/DHA",
-        "foods": ["Wild Salmon", "Sardines", "Walnuts", "Chia Seeds"],
+        "foods": [
+          "Wild Salmon (3 oz cooked / ~85g = ~1,500 mg)",
+          "Sardines (1 can / ~92g = ~1,200 mg)",
+          "Walnuts (1 oz / 14 halves = 2,500 mg ALA)",
+          "Chia Seeds (2 tbsp / ~28g = 5,000 mg ALA)"
+        ],
         "pro_tip": "Pair fish oil or algae oil with a fat-containing meal for maximum uptake."
       }
     ],
@@ -162,13 +202,13 @@
         "name": "Lion's Mane Mushroom",
         "type": "Nootropic Fungi",
         "benefit": "Stimulates Nerve Growth Factor (NGF) synthesis, supporting memory and cognitive sharpness.",
-        "how_to_use": "Mix extract powder into morning coffee, tea, or warm plant milk."
+        "how_to_use": "Mix 1 tsp extract powder into morning coffee, tea, or warm plant milk."
       },
       {
         "name": "Ginkgo Biloba",
         "type": "Microvascular Tonic",
         "benefit": "Enhances cerebral blood circulation and nutrient delivery to brain tissues.",
-        "how_to_use": "Take as a standardized extract or brewed leaf tea."
+        "how_to_use": "Take as a standardized extract (120 mg) or brewed leaf tea."
       }
     ]
   },
@@ -184,7 +224,12 @@
         "type": "Essential Mineral",
         "role": "Binds to GABA receptors in the brain to quiet the nervous system before bedtime.",
         "daily_target": "310–420 mg/day",
-        "foods": ["Pumpkin Seeds", "Almonds", "Dark Chocolate", "Avocados"],
+        "foods": [
+          "Pumpkin Seeds (1 oz / ~28g = 156 mg)",
+          "Almonds (1 oz / 23 nuts = 76 mg)",
+          "Dark Chocolate 70%+ (1 oz / ~28g = 64 mg)",
+          "Avocado (1 medium = 58 mg)"
+        ],
         "pro_tip": "Consume magnesium-rich foods or tea 1–2 hours before sleeping."
       }
     ],
@@ -193,13 +238,13 @@
         "name": "Chamomile Flowers",
         "type": "Calming Nervine",
         "benefit": "Contains apigenin, an antioxidant that promotes relaxation and drowsiness.",
-        "how_to_use": "Steep dried chamomile flowers in hot water covered for 10 minutes before bed."
+        "how_to_use": "Steep 2 tbsp dried chamomile flowers in hot water covered for 10 minutes before bed."
       },
       {
         "name": "Valerian Root",
         "type": "Sedative Herbal Tonic",
         "benefit": "Helps shorten the time it takes to fall asleep and improves sleep architecture.",
-        "how_to_use": "Brew as a strong evening decoction or liquid extract."
+        "how_to_use": "Brew 1 tsp root as a strong evening decoction or liquid extract."
       }
     ]
   },
@@ -215,7 +260,12 @@
         "type": "Essential Vitamin",
         "role": "Required co-factor for synthesizing GABA, serotonin, and dopamine.",
         "daily_target": "1.3–1.7 mg/day",
-        "foods": ["Chickpeas", "Poultry", "Bananas", "Sunflower Seeds"],
+        "foods": [
+          "Cooked Chickpeas (1 cup / ~164g = 1.1 mg)",
+          "Chicken Breast (3 oz cooked = 0.5 mg)",
+          "Banana (1 medium = 0.4 mg)",
+          "Sunflower Seeds (1 oz / ~28g = 0.4 mg)"
+        ],
         "pro_tip": "B6 acts synergistically with magnesium to stabilize nerve transmission."
       }
     ],
@@ -224,13 +274,13 @@
         "name": "Ashwagandha (KSM-66)",
         "type": "Ayurvedic Adaptogen",
         "benefit": "Helps lower serum cortisol (stress hormone) levels and supports stress resilience.",
-        "how_to_use": "Mix powdered root into warm milk or take as a standardized capsule."
+        "how_to_use": "Mix 1/2 tsp powdered root into warm milk or take as a standardized 300–600 mg capsule."
       },
       {
         "name": "Lemon Balm (Melissa officinalis)",
         "type": "Soothing Nervine",
         "benefit": "Eases nervous agitation, mild excitability, and stress-related digestive upset.",
-        "how_to_use": "Enjoy as a fragrant warm tea throughout tense afternoons."
+        "how_to_use": "Enjoy as a fragrant warm tea (1–2 tsp dried leaves) throughout tense afternoons."
       }
     ]
   },
@@ -246,7 +296,12 @@
         "type": "Essential B-Vitamin",
         "role": "Supports mitochondrial energy production in brain vascular cells.",
         "daily_target": "1.1–1.3 mg/day",
-        "foods": ["Almonds", "Pastured Eggs", "Mushrooms", "Grass-fed Yogurt"],
+        "foods": [
+          "Almonds (1 oz / 23 nuts = 0.3 mg)",
+          "Pastured Eggs (2 large eggs = 0.5 mg)",
+          "Cooked Mushrooms (1 cup / ~150g = 0.4 mg)",
+          "Plain Greek Yogurt (1 cup / 245g = 0.6 mg)"
+        ],
         "pro_tip": "B2 works best when balanced with a full spectrum B-complex diet."
       }
     ],
@@ -255,7 +310,7 @@
         "name": "Feverfew (Tanacetum parthenium)",
         "type": "Vascular Herbal Tonic",
         "benefit": "Traditionally used to inhibit blood vessel constriction and smooth muscle spasms in the head.",
-        "how_to_use": "Brew dried leaves as tea or take as a daily extract."
+        "how_to_use": "Brew 1 tsp dried leaves as tea or take as a daily extract."
       }
     ]
   },
@@ -271,8 +326,13 @@
         "type": "Essential Antioxidant",
         "role": "Crucial co-factor for collagen synthesis and cartilage tissue repair.",
         "daily_target": "75–90 mg/day",
-        "foods": ["Bell Peppers", "Citrus Fruits", "Strawberries", "Broccoli"],
-        "pro_tip": "Vitamin C is heat sensitive—consume raw fruits and lightly steamed vegetables."
+        "foods": [
+          "Yellow Bell Pepper (1/2 medium pepper / ~75g = ~137 mg)",
+          "Sliced Strawberries (1 cup / ~150g = 89 mg)",
+          "Steamed Broccoli (1 cup / ~150g = 81 mg)",
+          "Orange (1 medium = 70 mg)"
+        ],
+        "pro_tip": "Yellow bell peppers provide nearly 150% of your daily Vitamin C requirement in just half a pepper!"
       }
     ],
     "herbs": [
@@ -280,13 +340,13 @@
         "name": "Turmeric Root (Curcumin)",
         "type": "Anti-Inflammatory Rhizome",
         "benefit": "Inhibits inflammatory pathways (NF-kB) to soothe joint tissues.",
-        "how_to_use": "Always combine turmeric with black pepper (piperine) and healthy fats to boost absorption by 2,000%."
+        "how_to_use": "Mix 1 tsp ground turmeric with a pinch of black pepper (piperine) and warm oil or plant milk to boost absorption by 2,000%."
       },
       {
         "name": "Boswellia (Frankincense)",
         "type": "Herbal Resin",
         "benefit": "Helps preserve cartilage structure and reduces joint stiffness.",
-        "how_to_use": "Take as a standardized resin extract capsule."
+        "how_to_use": "Take as a standardized resin extract capsule (300–400 mg daily)."
       }
     ]
   },
@@ -302,7 +362,12 @@
         "type": "Essential Vitamin",
         "role": "Supports keratin production and structural lipid matrix in skin and hair follicles.",
         "daily_target": "30 mcg/day",
-        "foods": ["Pastured Egg Yolks", "Almonds", "Sweet Potatoes", "Sunflower Seeds"],
+        "foods": [
+          "Pastured Egg Yolks (2 large eggs = 20 mcg)",
+          "Almonds (1 oz / 23 nuts = 1.5 mcg)",
+          "Baked Sweet Potato (1 medium = 2.4 mcg)",
+          "Sunflower Seeds (1 oz / ~28g = 2.6 mcg)"
+        ],
         "pro_tip": "Cook egg whites thoroughly; raw egg whites contain avidin which binds biotin."
       }
     ],
@@ -311,7 +376,7 @@
         "name": "Horsetail (Equisetum arvense)",
         "type": "Silica-Rich Botanical",
         "benefit": "High natural bio-available silica content strengthens connective tissue, hair shaft, and nails.",
-        "how_to_use": "Steep dried horsetail herb in boiling water for 10–15 minutes as a mineral tea."
+        "how_to_use": "Steep 1–2 tsp dried horsetail herb in boiling water for 10–15 minutes as a mineral tea."
       }
     ]
   },
@@ -326,8 +391,13 @@
         "name": "Iron & B2 Complex",
         "type": "Essential Micronutrients",
         "role": "Drives rapid cellular turnover needed to maintain healthy oral mucous membranes.",
-        "daily_target": "Varies by nutrient",
-        "foods": ["Lentils", "Spinach", "Eggs", "Nutritional Yeast"],
+        "daily_target": "8–18 mg Iron / 1.1–1.3 mg B2",
+        "foods": [
+          "Cooked Lentils (1 cup / ~198g = 6.6 mg Iron)",
+          "Cooked Spinach (1 cup / ~180g = 6.4 mg Iron)",
+          "Pastured Eggs (2 large eggs = 0.5 mg B2)",
+          "Nutritional Yeast (1 tbsp / ~5g = 1.6 mg B2)"
+        ],
         "pro_tip": "Avoid combining iron-rich meals with strong black tea or coffee, as tannins inhibit absorption."
       }
     ],
@@ -336,7 +406,7 @@
         "name": "Calendula (Marigold)",
         "type": "Vulnerary Botanical",
         "benefit": "Soothes inflamed oral tissues and accelerates skin healing.",
-        "how_to_use": "Use cooled calendula tea as a gentle natural mouth rinse."
+        "how_to_use": "Use cooled calendula tea (1 tbsp steeped flowers) as a gentle natural mouth rinse."
       }
     ]
   },
@@ -352,7 +422,12 @@
         "type": "Blood Building Micronutrients",
         "role": "Sustains healthy hemoglobin and red blood cell count for proper peripheral oxygen distribution.",
         "daily_target": "8–18 mg Iron / 2.4 mcg B12",
-        "foods": ["Grass-fed Beef", "Sardines", "Lentils", "Pumpkin Seeds"],
+        "foods": [
+          "Grass-fed Beef (3 oz / ~85g = 2.2 mg Iron)",
+          "Sardines (1 can / ~92g = 8.2 mcg B12)",
+          "Cooked Lentils (1 cup / ~198g = 6.6 mg Iron)",
+          "Pumpkin Seeds (1 oz / ~28g = 2.5 mg Iron)"
+        ],
         "pro_tip": "Verify iron levels with blood ferritin tests before heavy supplementation."
       }
     ],
@@ -361,7 +436,7 @@
         "name": "Cayenne Pepper (Capsaicin)",
         "type": "Circulatory Stimulant",
         "benefit": "Promotes peripheral blood circulation and vascular warming throughout the limbs.",
-        "how_to_use": "Add a small pinch to warm water with lemon or incorporate into meals."
+        "how_to_use": "Add a small pinch (1/8 tsp) to warm water with lemon or incorporate into meals."
       }
     ]
   }
