@@ -129,7 +129,7 @@
                     <h3 class="text-xl font-bold">NutriMatch Pro Membership</h3>
                     <p class="text-sm text-slate-300 max-w-xl">Get unlimited access to all 12+ symptom guides, complete bio-hacks, herbal protocols, and weekly scientific updates for only £7.99/month.</p>
                 </div>
-                <button onclick="toggleMembership()" class="px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm rounded-xl transition shadow-md whitespace-nowrap">
+                <button id="bannerMembershipBtn" onclick="toggleMembership()" class="px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm rounded-xl transition shadow-md whitespace-nowrap">
                     Join NutriMatch Pro (£7.99/mo)
                 </button>
             </div>
@@ -407,15 +407,28 @@
             const badge = document.getElementById('memberBadge');
             const text = document.getElementById('memberText');
             const btn = document.getElementById('membershipBtn');
+            const bannerBtn = document.getElementById('bannerMembershipBtn');
 
             if (isPro) {
                 if (badge) badge.className = 'w-2 h-2 rounded-full bg-brand-500 animate-pulse';
                 if (text) text.innerText = 'NutriMatch Pro Active';
                 if (btn) btn.className = 'inline-flex items-center space-x-2 px-4 py-2 rounded-full text-xs font-bold transition-all shadow-sm border border-brand-300 bg-brand-50 text-brand-800 hover:bg-brand-100';
+                
+                // Update bottom banner button
+                if (bannerBtn) {
+                    bannerBtn.innerText = 'Pro Active ✓';
+                    bannerBtn.className = 'px-6 py-3 bg-emerald-600 text-white font-bold text-sm rounded-xl transition shadow-md whitespace-nowrap cursor-default';
+                }
             } else {
                 if (badge) badge.className = 'w-2 h-2 rounded-full bg-slate-400';
                 if (text) text.innerText = 'Upgrade to Pro (£7.99/mo)';
                 if (btn) btn.className = 'inline-flex items-center space-x-2 px-4 py-2 rounded-full text-xs font-bold transition-all shadow-sm border border-emerald-300 bg-emerald-50 text-brand-800 hover:bg-emerald-100';
+                
+                // Keep bottom banner default
+                if (bannerBtn) {
+                    bannerBtn.innerText = 'Join NutriMatch Pro (£7.99/mo)';
+                    bannerBtn.className = 'px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm rounded-xl transition shadow-md whitespace-nowrap';
+                }
             }
         }
 
