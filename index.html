@@ -246,7 +246,8 @@
     <!-- JAVASCRIPT APP LOGIC -->
     <script>
         // App State
-        let isPro = localStorage.getItem('nutrimatch_pro') === 'true';
+        const urlParams = new URLSearchParams(window.location.search);
+        let isPro = urlParams.get('paid') === 'true' || urlParams.get('subscribed') === 'true';
         let currentSubCategory = 'All';
 
         // Dataset of all 12 Symptoms
@@ -403,10 +404,11 @@
         function toggleMembership() {
             if (isPro) {
                 alert("You are already subscribed to NutriMatch Pro!");
-            } else {
-                // Redirect to official Stripe Payment Checkout Link
-                window.location.href = "https://buy.stripe.com/14A14f3aU0Mf3KC9QcfnO00";
+                return;
             }
+
+            // Only redirect to the Stripe payment page; do not trust browser storage for access.
+            window.location.href = "https://buy.stripe.com/14A14f3aU0Mf3KC9QcfnO00?redirect=true";
         }
 
         function updateMembershipUI() {
@@ -420,7 +422,6 @@
                 if (text) text.innerText = 'NutriMatch Pro Active';
                 if (btn) btn.className = 'inline-flex items-center space-x-2 px-4 py-2 rounded-full text-xs font-bold transition-all shadow-sm border border-brand-300 bg-brand-50 text-brand-800 hover:bg-brand-100';
                 
-                // Update bottom banner button
                 if (bannerBtn) {
                     bannerBtn.innerText = 'Pro Active ✓';
                     bannerBtn.className = 'px-6 py-3 bg-emerald-600 text-white font-bold text-sm rounded-xl transition shadow-md whitespace-nowrap cursor-default';
@@ -430,7 +431,6 @@
                 if (text) text.innerText = 'Upgrade to Pro (£7.99/mo)';
                 if (btn) btn.className = 'inline-flex items-center space-x-2 px-4 py-2 rounded-full text-xs font-bold transition-all shadow-sm border border-emerald-300 bg-emerald-50 text-brand-800 hover:bg-emerald-100';
                 
-                // Keep bottom banner default
                 if (bannerBtn) {
                     bannerBtn.innerText = 'Join NutriMatch Pro (£7.99/mo)';
                     bannerBtn.className = 'px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm rounded-xl transition shadow-md whitespace-nowrap';
@@ -537,13 +537,13 @@
 
         // On Page Load Initialization
         window.addEventListener('DOMContentLoaded', () => {
-            // Check if returning from Stripe after successful payment
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('subscribed') === 'true') {
-                localStorage.setItem('nutrimatch_pro', 'true');
+            // Only unlock after a successful payment redirect. Nothing in localStorage should grant access.
+            if (urlParams.get('paid') === 'true' || urlParams.get('subscribed') === 'true') {
                 isPro = true;
                 window.history.replaceState({}, document.title, window.location.pathname);
                 alert("Welcome to NutriMatch Pro! Your subscription is now active.");
+            } else {
+                isPro = false;
             }
 
             updateMembershipUI();
