@@ -69,6 +69,23 @@ function updateMembershipUI() {
             bannerBtn.className = 'px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm rounded-xl transition shadow-md whitespace-nowrap cursor-pointer';
         }
     }
+
+    // Toggle static HTML discovery cards based on Pro state (runs for both states)
+    document.querySelectorAll('.is-pro-content').forEach(el => {
+        if (isPro) {
+            el.classList.remove('blur-[4px]', 'select-none', 'pointer-events-none', 'opacity-50');
+        } else {
+            el.classList.add('blur-[4px]', 'select-none', 'pointer-events-none', 'opacity-50');
+        }
+    });
+
+    document.querySelectorAll('.is-pro-overlay').forEach(el => {
+        if (isPro) {
+            el.classList.add('hidden');
+        } else {
+            el.classList.remove('hidden');
+        }
+    });
 }
 
 // 4. Sub-category & Filtering
